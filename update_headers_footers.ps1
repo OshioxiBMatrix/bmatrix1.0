@@ -1,30 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Stockton Template | Contact</title>
-<!-- Stylesheets -->
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-<link href="css/responsive.css" rel="stylesheet">
+# PowerShell script to update headers and footers in all HTML files
+$files = Get-ChildItem -Path . -Filter "*.html" -File | Where-Object { $_.Name -ne "index.html" -and $_.Name -ne "about.html" -and $_.Name -ne "services.html" -and $_.Name -ne "blog.html" }
 
-<!--Favicon-->
-<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-<link rel="icon" href="images/favicon.png" type="image/x-icon">
-<!-- Responsive -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
-<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
-</head>
-
-<body>
-<div class="page-wrapper">
- 	
-    <!-- Preloader -->
-    <div class="preloader"></div>
- 	
-    <!-- Main Header-->
+foreach ($file in $files) {
+    Write-Host "Processing $($file.Name)..."
+    
+    # Read the file content
+    $content = Get-Content -Path $file.FullName -Raw
+    
+    # Replace header section
+    $content = $content -replace '(?s)<!-- Main Header-->.*?<!--End Sticky Header-->', @'
+<!-- Main Header-->
     <header class="main-header">
     
     	<!--Header Top-->
@@ -187,184 +172,11 @@
     
     </header>
     <!--End Main Header -->
+'@
     
-    </header>
-    <!--End Main Header -->
-    
-    </header>
-    <!--End Main Header -->
-    
-    <!--Page Title-->
-    <section class="page-title" style="background-image:url(images/background/3.jpg);">
-        <div class="auto-container">
-            <h1>Liên hệ</h1>
-            <div class="title">Liên hệ với chúng tôi</div>
-        </div>
-        <!--Page Info-->
-        <div class="page-info">
-            <div class="auto-container">
-            	<div class="inner-container">
-                    <ul class="bread-crumb">
-                        <li><a href="index.html">Trang chủ</a></li>
-                        <li>Liên hệ</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--End Page Info-->
-    </section>
-    <!--End Page Title-->
-    
-    <!--Contact Section-->
-    <section class="contact-section">
-    	<div class="auto-container">
-        	<div class="contact-banner" style="background-image:url(images/background/6.jpg)">
-            	<div class="banner-inner">
-                	<h2>Liên hệ với chúng tôi</h2>
-                    <div class="emailed">contact@bountymatrix.net</div>
-                </div>
-            </div>
-            <div class="form-lower-section clearfix">
-                <!--Info Column-->
-                <div class="info-column col-md-4 col-sm-12 col-xs-12">
-                    <div class="inner-column">
-                        
-                        <div class="single-item-carousel owl-carousel owl-theme">
-                        	<div class="slide">
-                            	<h3>Trụ sở chính</h3>
-                                <ul class="info-list">
-                                    <li><span class="icon flaticon-placeholder-filled-point"></span><strong>Địa chỉ:</strong> QL32, Phụng Thượng, Phúc Thọ, Hà Nội, Việt Nam</li>
-                                    <li><span class="icon flaticon-telephone-handle-silhouette"></span><strong>Điện thoại:</strong>+84 966 342 709</li>
-                                    <li><span class="icon fa fa-envelope"></span><strong>Mail Us:</strong>contact@bountymatrix.net</li>
-                                    <li><span class="icon flaticon-clock-3"></span><strong>Giờ làm việc:</strong>Thứ Hai - Thứ Bảy: 08.00am - 18.00pm</li>
-                                </ul>
-                                <ul class="social-icon-three">
-                                    <li><a href="https://www.facebook.com/bountymatrix"><span class="fa fa-facebook"></span></a></li>
-                                    <li><a href="https://x.com/bountymatrix"><span class="fa fa-twitter"></span></a></li>
-                                    <li><a href="https://www.linkedin.com/company/bountymatrix"><span class="fa fa-linkedin"></span></a></li>
-                                    <li><a href="https://www.tiktok.com/@bountysmatrix"><span class="fa fa-tiktok"></span></a></li>
-                                    <li><a href="https://www.reddit.com/user/BountyMatrix/"><span class="fa fa-reddit"></span></a></li>
-                                    <li><a href="https://www.instagram.com/bountymatrix/"><span class="fa fa-instagram"></span></a></li>
-                                    <li><a href="https://www.pinterest.com/bountymatrix/"><span class="fa fa-pinterest-p"></span></a></li>
-                                </ul>
-                            </div>
-                            <div class="slide">
-                            	<h3>Trụ sở phụ</h3>
-                                <ul class="info-list">
-                                    <li><span class="icon flaticon-placeholder-filled-point"></span><strong>Địa chỉ:</strong> QL32, Phụng Thượng, Phúc Thọ, Hà Nội, Việt Nam</li>
-                                    <li><span class="icon flaticon-telephone-handle-silhouette"></span><strong>Điện thoại:</strong>+84 966 342 709</li>
-                                    <li><span class="icon fa fa-envelope"></span><strong>Mail Us:</strong>contact@bountymatrix.net</li>
-                                    <li><span class="icon flaticon-clock-3"></span><strong>Giờ làm việc:</strong>Thứ Hai - Thứ Bảy: 08.00am - 18.00pm</li>
-                                </ul>
-                                <ul class="social-icon-three">
-                                    <li><a href="https://www.facebook.com/bountymatrix"><span class="fa fa-facebook"></span></a></li>
-                                    <li><a href="https://x.com/bountymatrix"><span class="fa fa-twitter"></span></a></li>
-                                    <li><a href="https://www.linkedin.com/company/bountymatrix"><span class="fa fa-linkedin"></span></a></li>
-                                    <li><a href="https://www.tiktok.com/@bountysmatrix"><span class="fa fa-tiktok"></span></a></li>
-                                    <li><a href="https://www.reddit.com/user/BountyMatrix/"><span class="fa fa-reddit"></span></a></li>
-                                    <li><a href="https://www.instagram.com/bountymatrix/"><span class="fa fa-instagram"></span></a></li>
-                                    <li><a href="https://www.pinterest.com/bountymatrix/"><span class="fa fa-pinterest-p"></span></a></li>
-                                </ul>
-                            </div>
-                            <div class="slide">
-                            	<h3>Trụ sở phụ</h3>
-                                <ul class="info-list">
-                                    <li><span class="icon flaticon-placeholder-filled-point"></span><strong>Địa chỉ:</strong> QL32, Phụng Thượng, Phúc Thọ, Hà Nội, Việt Nam</li>
-                                    <li><span class="icon flaticon-telephone-handle-silhouette"></span><strong>Điện thoại:</strong>+84 966 342 709</li>
-                                    <li><span class="icon fa fa-envelope"></span><strong>Mail Us:</strong>contact@bountymatrix.net</li>
-                                    <li><span class="icon flaticon-clock-3"></span><strong>Giờ làm việc:</strong>Thứ Hai - Thứ Bảy: 08.00am - 18.00pm</li>
-                                </ul>
-                                <ul class="social-icon-three">
-                                    <li><a href="https://www.facebook.com/bountymatrix"><span class="fa fa-facebook"></span></a></li>
-                                    <li><a href="https://x.com/bountymatrix"><span class="fa fa-twitter"></span></a></li>
-                                    <li><a href="https://www.linkedin.com/company/bountymatrix"><span class="fa fa-linkedin"></span></a></li>
-                                    <li><a href="https://www.tiktok.com/@bountysmatrix"><span class="fa fa-tiktok"></span></a></li>
-                                    <li><a href="https://www.reddit.com/user/BountyMatrix/"><span class="fa fa-reddit"></span></a></li>
-                                    <li><a href="https://www.instagram.com/bountymatrix/"><span class="fa fa-instagram"></span></a></li>
-                                    <li><a href="https://www.pinterest.com/bountymatrix/"><span class="fa fa-pinterest-p"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Form Column-->
-                <div class="form-column col-md-8 col-sm-12 col-xs-12">
-                    <div class="inner-column">
-                    	<div class="row clearfix">
-                        	<div class="label-column col-md-4 col-sm-12 col-xs-12">
-                            	<ul class="labels-name">
-                                	<li>Tên & Email:</li>
-                                    <li>Điện thoại & Chủ đề:</li>
-                                    <li>Nội dung:</li>
-                                </ul>
-                            </div>
-                            <div class="form-inner-column col-md-8 col-sm-12 col-xs-12">
-                            	
-                                <!-- Contact Form -->
-                                <div class="contact-form">
-                                    <!--Comment Form-->
-                                    <form method="post" action="sendemail.php" id="contact-form">
-                                        <div class="row clearfix">
-                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                <input type="text" name="username" placeholder="Your Name*" required>
-                                            </div>
-            
-                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                <input type="email" name="email" placeholder="Email Address*" required>
-                                            </div>
-                                            
-                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                <input type="text" name="phone" placeholder="Phone" required>
-                                            </div>
-                                            
-                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                <input type="text" name="subject" placeholder="Subject" required>
-                                            </div>
-                                            
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                                                <textarea name="message" placeholder="Message"></textarea>
-                                            </div>
-            
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                                                <button class="theme-btn btn-style-one" type="submit" name="submit-form">Send message</button>
-                                            </div>
-            
-                                        </div>
-                                    </form>
-            
-                                </div>
-                                <!--End Contact Form -->
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--End Contact Section-->
-    
-    <!--Map Section-->
-    <section class="map-section">
-    	<!--Map Outer-->
-        <div class="map-outer">
-            <div class="google-map"
-                id="contact-google-map" 
-                data-map-lat="21.091991324345063" 
-                data-map-lng="105.5878261311428" 
-                data-icon-path="images/icons/map-marker.png" 
-                data-map-title="Trụ sở chính" 
-                data-map-zoom="12" 
-                data-markers='{
-                    "marker-2": [21.091991324345063, 105.5878261311428, "<h4>Trụ sở chính</h4><p>QL32, Phụng Thượng, Phúc Thọ, Hà Nội, Việt Nam</p>"]
-                }'>
-
-    		</div>
-        </div>
-    </section>
-	<!--End Map Section-->
-    
-    <!--Main Footer-->
+    # Replace footer section
+    $content = $content -replace '(?s)<!--Main Footer-->.*?<!--End Main Footer-->', @'
+<!--Main Footer-->
     <footer class="main-footer">
     	<div class="auto-container">
         	<!--Widgets Section-->
@@ -470,26 +282,12 @@
         </div>
     </footer>
     <!--End Main Footer-->
+'@
     
-</div>
-<!--End pagewrapper-->
+    # Save the updated content back to the file
+    Set-Content -Path $file.FullName -Value $content
+    
+    Write-Host "Updated $($file.Name) successfully."
+}
 
-<!--Scroll to top-->
-<div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-arrow-up"></span></div>
-
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.fancybox.js"></script>
-<script src="js/owl.js"></script>
-<script src="js/appear.js"></script>
-<script src="js/wow.js"></script>
-<script src="js/validate.js"></script>
-<script src="js/script.js"></script>
-<!--Google Map APi Key-->
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyBKS14AnP3HCIVlUpPKtGp7CbYuMtcXE2o"></script>
-<script src="js/gmaps.js"></script>
-<script src="js/map-script.js"></script>
-<!--End Google Map APi-->
-</body>
-</html>
-
+Write-Host "All files have been updated." 
